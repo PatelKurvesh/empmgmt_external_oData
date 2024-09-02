@@ -1,0 +1,81 @@
+{
+ "meta": {
+  "creator": "cds-dk 8.1.2"
+ },
+ "$version": "2.0",
+ "definitions": {
+  "employeemgmt": {
+   "kind": "service",
+   "@cds.external": true,
+   "@m.IsDefaultEntityContainer": "true"
+  },
+  "employeemgmt.Employees": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "EMP_ID": {
+     "key": true,
+     "type": "cds.Integer",
+     "notNull": true
+    },
+    "EMP_NAME": {
+     "type": "cds.LargeString"
+    },
+    "EMP_SALARY": {
+     "type": "cds.LargeString"
+    },
+    "IMG_URL": {
+     "type": "cds.LargeString"
+    },
+    "MODULE_MODULE_ID": {
+     "type": "cds.LargeString"
+    },
+    "blob": {
+     "type": "cds.LargeBinary",
+     "@Core.MediaType": "application/octet-stream"
+    },
+    "MODULE": {
+     "type": "cds.Association",
+     "target": "employeemgmt.Modules",
+     "keys": []
+    }
+   }
+  },
+  "employeemgmt.Modules": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "elements": {
+    "MODULE_ID": {
+     "key": true,
+     "type": "cds.LargeString",
+     "notNull": true
+    },
+    "MODULE_NAME": {
+     "type": "cds.LargeString"
+    },
+    "MODULE_TYPE": {
+     "type": "cds.LargeString"
+    }
+   }
+  },
+  "employeemgmt.return_EmployeeService_readSingleEmployee": {
+   "kind": "type",
+   "@cds.external": true,
+   "elements": {}
+  },
+  "employeemgmt.readSingleEmployee": {
+   "kind": "function",
+   "@cds.external": true,
+   "params": {
+    "EMP_ID": {
+     "type": "cds.Integer"
+    }
+   },
+   "returns": {
+    "type": "employeemgmt.return_EmployeeService_readSingleEmployee"
+   }
+  }
+ }
+}
